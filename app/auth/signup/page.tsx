@@ -20,6 +20,8 @@ export default function SignUp() {
     e.preventDefault()
     // Handle signup logic here
     console.log('Signup attempt:', formData)
+    // Redirect to dashboard after successful signup
+    window.location.href = '/dashboard'
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -43,31 +45,6 @@ export default function SignUp() {
         <div className="particle particle-8"></div>
         <div className="particle particle-9"></div>
         <div className="particle particle-10"></div>
-        <div className="particle particle-11"></div>
-        <div className="particle particle-12"></div>
-        <div className="particle particle-13"></div>
-        <div className="particle particle-14"></div>
-        <div className="particle particle-15"></div>
-        <div className="particle particle-16"></div>
-        <div className="particle particle-17"></div>
-        <div className="particle particle-18"></div>
-        <div className="particle particle-19"></div>
-        <div className="particle particle-20"></div>
-        <div className="particle particle-21"></div>
-        <div className="particle particle-22"></div>
-        <div className="particle particle-23"></div>
-        <div className="particle particle-24"></div>
-        <div className="particle particle-25"></div>
-        <div className="particle particle-26"></div>
-        <div className="particle particle-27"></div>
-        <div className="particle particle-28"></div>
-        <div className="particle particle-29"></div>
-        <div className="particle particle-30"></div>
-        <div className="particle particle-31"></div>
-        <div className="particle particle-32"></div>
-        <div className="particle particle-33"></div>
-        <div className="particle particle-34"></div>
-        <div className="particle particle-35"></div>
       </div>
 
       {/* Shooting stars */}
@@ -77,161 +54,129 @@ export default function SignUp() {
         <div className="shooting-star shooting-star-3"></div>
       </div>
 
-      {/* Sign Up Form */}
-      <div className="relative z-10 w-full max-w-lg">
-        <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 border border-white/10 shadow-2xl">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <Link href="/" className="inline-flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-yellow rounded-full flex items-center justify-center">
-                <div className="w-4 h-4 bg-dark-green rounded-full"></div>
-              </div>
-              <span className="text-white font-bold text-2xl">CHE</span>
-            </Link>
-            <h1 className="text-3xl font-bold text-white mb-2">Join Our Community</h1>
-            <p className="text-white/70">Start your cultural exchange journey today</p>
-          </div>
-
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="firstName" className="block text-white/80 text-sm font-medium mb-2">
-                  First Name
-                </label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-yellow focus:bg-white/15 transition-all"
-                  placeholder="First name"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="lastName" className="block text-white/80 text-sm font-medium mb-2">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-yellow focus:bg-white/15 transition-all"
-                  placeholder="Last name"
-                  required
-                />
-              </div>
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <Link href="/" className="inline-flex items-center space-x-3 mb-8">
+            <div className="w-16 h-16 bg-yellow rounded-3xl flex items-center justify-center">
+              <div className="w-8 h-8 bg-dark-green rounded-2xl"></div>
             </div>
+            <span className="text-white font-bold text-3xl">CHE</span>
+          </Link>
+          <h1 className="text-5xl font-bold text-white mb-4">Join Our Community</h1>
+          <p className="text-white/70 text-xl max-w-2xl mx-auto">
+            Choose how you'd like to participate in our cultural exchange platform
+          </p>
+        </div>
 
-            <div>
-              <label htmlFor="email" className="block text-white/80 text-sm font-medium mb-2">
-                Email Address
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-yellow focus:bg-white/15 transition-all"
-                placeholder="Enter your email"
-                required
-              />
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Tourist Option */}
+          <div className="group">
+            <div className="bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 p-8 shadow-2xl hover:bg-white/15 hover:border-yellow/40 transition-all">
+              <div className="text-center mb-6">
+                <div className="w-20 h-20 bg-gradient-to-br from-yellow to-yellow/70 rounded-3xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <svg className="w-10 h-10 text-dark-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h2 className="text-3xl font-bold text-white mb-3">I'm a Tourist</h2>
+                <p className="text-white/70 text-lg leading-relaxed">
+                  Discover authentic cultural experiences and stay with local families around the world
+                </p>
+              </div>
 
-            <div>
-              <label htmlFor="country" className="block text-white/80 text-sm font-medium mb-2">
-                Country
-              </label>
-              <select
-                id="country"
-                name="country"
-                value={formData.country}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-yellow focus:bg-white/15 transition-all"
-                required
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center space-x-3">
+                  <div className="w-2 h-2 bg-yellow rounded-full"></div>
+                  <span className="text-white/80">Book cultural experiences</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-2 h-2 bg-yellow rounded-full"></div>
+                  <span className="text-white/80">Stay with host families</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-2 h-2 bg-yellow rounded-full"></div>
+                  <span className="text-white/80">Learn traditional skills</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-2 h-2 bg-yellow rounded-full"></div>
+                  <span className="text-white/80">Join cultural festivals</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-2 h-2 bg-yellow rounded-full"></div>
+                  <span className="text-white/80">Save and review experiences</span>
+                </div>
+              </div>
+
+              <Link
+                href="/auth/signup/tourist"
+                className="w-full bg-yellow text-dark-green py-4 rounded-2xl font-bold hover:bg-yellow/90 transition-colors flex items-center justify-center group-hover:scale-105 transform"
               >
-                <option value="" className="bg-dark-green text-white">Select your country</option>
-                {countries.map((country) => (
-                  <option key={country} value={country} className="bg-dark-green text-white">
-                    {country}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label htmlFor="password" className="block text-white/80 text-sm font-medium mb-2">
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-yellow focus:bg-white/15 transition-all"
-                placeholder="Create a password"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="confirmPassword" className="block text-white/80 text-sm font-medium mb-2">
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                id="confirmPassword"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-yellow focus:bg-white/15 transition-all"
-                placeholder="Confirm your password"
-                required
-              />
-            </div>
-
-            <div className="flex items-center">
-              <input type="checkbox" id="terms" className="sr-only" required />
-              <div className="w-4 h-4 bg-white/10 border border-white/20 rounded flex items-center justify-center mr-3">
-                <svg className="w-3 h-3 text-yellow hidden" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                Sign Up as Tourist
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </div>
-              <label htmlFor="terms" className="text-white/70 text-sm">
-                I agree to the{' '}
-                <Link href="#" className="text-yellow hover:text-yellow/80 transition-colors">
-                  Terms of Service
-                </Link>
-                {' '}and{' '}
-                <Link href="#" className="text-yellow hover:text-yellow/80 transition-colors">
-                  Privacy Policy
-                </Link>
-              </label>
-            </div>
-
-            <button
-              type="submit"
-              className="w-full bg-yellow text-dark-green py-3 rounded-xl font-semibold hover:bg-yellow/90 transition-colors"
-            >
-              Create Account
-            </button>
-          </form>
-
-          {/* Footer */}
-          <div className="mt-8 text-center">
-            <p className="text-white/70 text-sm">
-              Already have an account?{' '}
-              <Link href="/auth/login" className="text-yellow hover:text-yellow/80 font-medium transition-colors">
-                Sign in here
               </Link>
-            </p>
+            </div>
           </div>
+
+          {/* Host Family Option */}
+          <div className="group">
+            <div className="bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 p-8 shadow-2xl hover:bg-white/15 hover:border-yellow/40 transition-all">
+              <div className="text-center mb-6">
+                <div className="w-20 h-20 bg-gradient-to-br from-yellow to-yellow/70 rounded-3xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <svg className="w-10 h-10 text-dark-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                  </svg>
+                </div>
+                <h2 className="text-3xl font-bold text-white mb-3">I'm a Host Family</h2>
+                <p className="text-white/70 text-lg leading-relaxed">
+                  Share your culture and traditions by welcoming travelers into your home
+                </p>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center space-x-3">
+                  <div className="w-2 h-2 bg-yellow rounded-full"></div>
+                  <span className="text-white/80">Host international guests</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-2 h-2 bg-yellow rounded-full"></div>
+                  <span className="text-white/80">Share your cultural heritage</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-2 h-2 bg-yellow rounded-full"></div>
+                  <span className="text-white/80">Teach traditional skills</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-2 h-2 bg-yellow rounded-full"></div>
+                  <span className="text-white/80">Manage your availability</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-2 h-2 bg-yellow rounded-full"></div>
+                  <span className="text-white/80">Earn from hosting</span>
+                </div>
+              </div>
+
+              <Link
+                href="/auth/signup/host"
+                className="w-full bg-yellow text-dark-green py-4 rounded-2xl font-bold hover:bg-yellow/90 transition-colors flex items-center justify-center group-hover:scale-105 transform"
+              >
+                Sign Up as Host Family
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="text-center mt-12">
+          <p className="text-white/60 text-lg">
+            Already have an account?{' '}
+            <Link href="/auth/login" className="text-yellow hover:text-yellow/80 font-medium">
+              Sign in here
+            </Link>
+          </p>
         </div>
       </div>
     </div>

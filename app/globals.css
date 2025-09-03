@@ -28,9 +28,15 @@
 }
 
 /* Disable interaction only for decorative elements */
-.floating-particles, .particle, .cursor-glow, .shooting-stars, .shooting-star {
+.floating-particles, .particle, .cursor-glow, .shooting-stars, .shooting-star, .rug-strip, .rug-animation, .rug-animation-right, .rug-item {
   pointer-events: none !important;
   user-select: none !important;
+}
+
+/* Ensure footer and interactive elements allow interaction */
+footer, footer * {
+  pointer-events: auto !important;
+  user-select: auto !important;
 }
 
 /* Ensure map container allows interaction */
@@ -44,6 +50,7 @@ body {
   font-family: 'Inter', sans-serif !important;
   min-height: 100vh;
   line-height: 1.6;
+  scroll-behavior: smooth;
 }
 
 /* Dropdown fixes */
@@ -660,5 +667,88 @@ option:hover, option:focus {
   100% {
     transform: translateY(-100vh) translateX(50px) scale(0);
     opacity: 0;
+  }
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #fdeb37, #fdeb37/70);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #fdeb37/90, #fdeb37/60);
+}
+
+/* Sidebar specific scrollbar */
+.sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 6px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: rgba(253, 235, 55, 0.4);
+  border-radius: 6px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(253, 235, 55, 0.6);
+}
+
+/* Rug Animation Strip */
+.rug-strip {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 2rem 0;
+}
+
+.rug-animation {
+  display: inline-block;
+  animation: scroll-horizontal 20s linear infinite;
+}
+
+.rug-animation-right {
+  display: inline-block;
+  animation: scroll-horizontal-right 20s linear infinite;
+}
+
+.rug-item {
+  display: inline-block;
+  margin: 0;
+  opacity: 0.8;
+  filter: sepia(20%) saturate(1.2);
+  height: 80px;
+  width: auto;
+}
+
+@keyframes scroll-horizontal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes scroll-horizontal-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }

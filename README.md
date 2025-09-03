@@ -5,55 +5,102 @@ A Next.js-based platform connecting travelers with authentic cultural experience
 ## 🎨 Design System
 
 **Color Palette:**
-- Dark Green (`#031D1E`) - Headers, navigation, primary text
-- Yellow (`#fdeb37`) - CTAs, highlights, interactive elements
-- Desert Sand (`#F1BFAD`) - Content backgrounds, cards
-- Morning Blue (`#8BA79B`) - Secondary text, accents
 
-**Typography:**
-- Primary: Inter (sans-serif)
-- Headers: Playfair Display (serif)
+### Core Functionality
+- **Festival Booking System**: Book authentic cultural festivals with integrated payment
+- **Messaging System**: Real-time communication between tourists and hosts
+- **Review & Rating System**: Photo/video uploads, verified reviews
+- **Cultural Blog**: Expert articles on Central Asian and Russian culture
+- **Payment Integration**: Multiple payment methods (Credit Card, PayPal, Crypto, Bank Transfer)
+- **Notification System**: Real-time updates and alerts
+- **Multilingual Support**: 8 languages including English, Russian, Kazakh, Uzbek, Kyrgyz
 
-## 🚀 Quick Start
+### User Experience
+- **Animated Background**: Floating particles and shooting stars
+- **Glassmorphism Design**: Modern translucent UI elements
+- **Custom Scrollbars**: Project-themed yellow gradient scrollbars
+- **Responsive Design**: Mobile-first approach
+- **Interactive Components**: Booking modals, messaging interface, review system
 
-1. Install dependencies:
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd cultural-project
+```
+
+2. Install dependencies:
 ```bash
 npm install
+# or
+yarn install
 ```
 
-2. Run development server:
+3. Run the development server:
 ```bash
 npm run dev
+# or
+yarn dev
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000)
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## 🔐 Login Credentials
+
+### Admin Access
+- **Username**: `admin`
+- **Password**: `adjo1020`
+- **Dashboard**: `/dashboard/admin`
+
+### Test Users
+- **Tourist**: Any email address → `/dashboard/tourist`
+- **Host**: Username containing "host" or "family" → `/dashboard/host`
 
 ## 📁 Project Structure
 
 ```
 ├── app/
 │   ├── auth/
-│   │   ├── login/          # Login page
-│   │   └── signup/         # Registration page
+│   │   ├── login/              # Login page
+│   │   └── signup/             # Multi-role signup system
+│   │       ├── tourist/        # Tourist registration
+│   │       └── host/           # Host family registration
 │   ├── dashboard/
-│   │   ├── tourist/        # Tourist dashboard
-│   │   └── host/           # Host family dashboard
-│   ├── admin/              # Admin panel
-│   ├── globals.css         # Global styles
-│   ├── layout.tsx          # Root layout
-│   └── page.tsx            # Landing page
+│   │   ├── admin/              # Admin panel
+│   │   ├── tourist/            # Tourist dashboard
+│   │   └── host/               # Host dashboard
+│   ├── globals.css             # Global styles & animations
+│   ├── layout.tsx              # Root layout
+│   └── page.tsx                # Landing page
 ├── components/
-│   ├── Hero.tsx            # Landing hero section
-│   ├── SearchSection.tsx   # Search functionality
-│   ├── MapSection.tsx      # Interactive map display
-│   ├── InteractiveMap.tsx  # Leaflet map component
-│   ├── DashboardMap.tsx    # Dashboard map view
-│   └── Footer.tsx          # Site footer
-└── ...config files
+│   ├── BookingModal.tsx        # 3-step booking process
+│   ├── MessagingSystem.tsx     # Real-time messaging
+│   ├── ReviewSystem.tsx        # Reviews with photo uploads
+│   ├── PaymentSystem.tsx       # Multi-method payments
+│   ├── NotificationSystem.tsx  # Real-time notifications
+│   ├── LanguageSelector.tsx    # Multilingual support
+│   ├── CulturalBlog.tsx        # Blog system
+│   ├── Festivals.tsx           # Festival showcase
+│   ├── Hero.tsx                # Landing hero section
+│   ├── InteractiveMap.tsx      # Cultural experiences map
+│   ├── Testimonials.tsx        # User testimonials
+│   └── Footer.tsx              # Site footer
+└── public/                     # Static assets
 ```
 
-## ✨ Features
+## 🎨 Design System
 
+### Colors
+- **Primary Yellow**: `#F4D03F` (CHE brand color)
+- **Dark Green**: `#1B4332` (accent color)
+- **Background**: Animated gradient with particles
 ### Landing Page
 - Hero section with cultural visuals
 - Interactive search with country/city filters

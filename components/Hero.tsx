@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { useTranslation } from '../hooks/useTranslation'
 
 export default function Hero() {
-  const [selectedLanguage, setSelectedLanguage] = useState('English')
+  const { language, changeLanguage, t } = useTranslation()
   const [isLanguageOpen, setIsLanguageOpen] = useState(false)
 
   const languages = [
@@ -12,6 +13,8 @@ export default function Hero() {
     { code: 'ru', name: 'Русский', flag: '🇷🇺' },
     { code: 'uz', name: 'O\'zbek', flag: '🇺🇿' }
   ]
+
+  const currentLanguage = languages.find(lang => lang.code === language) || languages[0]
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -36,10 +39,10 @@ export default function Hero() {
               <div className="w-2 h-2 md:w-3 md:h-3 bg-dark-green rounded-full"></div>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#about" className="text-white/90 hover:text-yellow transition-colors text-sm font-medium">About</a>
-              <a href="#packages" className="text-white/90 hover:text-yellow transition-colors text-sm font-medium">Packages</a>
-              <a href="#locations" className="text-white/90 hover:text-yellow transition-colors text-sm font-medium">Locations</a>
-              <a href="#contact" className="text-white/90 hover:text-yellow transition-colors text-sm font-medium">Contact</a>
+              <button onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })} className="text-white/90 hover:text-yellow transition-colors text-sm font-medium">{t('about')}</button>
+              <button onClick={() => document.getElementById('festivals')?.scrollIntoView({ behavior: 'smooth' })} className="text-white/90 hover:text-yellow transition-colors text-sm font-medium">{t('packages')}</button>
+              <button onClick={() => document.getElementById('locations')?.scrollIntoView({ behavior: 'smooth' })} className="text-white/90 hover:text-yellow transition-colors text-sm font-medium">{t('locations')}</button>
+              <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="text-white/90 hover:text-yellow transition-colors text-sm font-medium">{t('contact')}</button>
               
               {/* Language Selector */}
               <div className="relative">
@@ -47,7 +50,7 @@ export default function Hero() {
                   onClick={() => setIsLanguageOpen(!isLanguageOpen)}
                   className="bg-white/10 rounded-full px-4 py-2 flex items-center space-x-2 hover:bg-white/20 transition-colors"
                 >
-                  <span className="text-white text-sm font-medium">{selectedLanguage}</span>
+                  <span className="text-white text-sm font-medium">{currentLanguage.name}</span>
                   <svg className={`w-4 h-4 text-white transition-transform ${isLanguageOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
@@ -59,7 +62,7 @@ export default function Hero() {
                       <button
                         key={lang.code}
                         onClick={() => {
-                          setSelectedLanguage(lang.name)
+                          changeLanguage(lang.code as 'en' | 'ru' | 'uz')
                           setIsLanguageOpen(false)
                         }}
                         className="w-full px-4 py-2 text-left hover:bg-white/10 transition-colors flex items-center space-x-3"
@@ -74,17 +77,17 @@ export default function Hero() {
               
               <div className="flex items-center space-x-3">
                 <Link href="/auth/login" className="text-white/90 hover:text-yellow transition-colors text-sm font-medium">
-                  Login
+                  {t('login')}
                 </Link>
                 <div className="w-px h-4 bg-white/20"></div>
                 <Link href="/auth/signup" className="bg-yellow text-dark-green px-4 py-2 rounded-full text-sm font-semibold hover:bg-yellow/90 transition-colors whitespace-nowrap">
-                  Sign Up
+                  {t('signup')}
                 </Link>
               </div>
             </div>
             <div className="md:hidden flex items-center space-x-3">
-              <a href="#about" className="text-white/90 hover:text-yellow transition-colors text-xs font-medium">About</a>
-              <a href="#packages" className="text-white/90 hover:text-yellow transition-colors text-xs font-medium">Packages</a>
+              <button onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })} className="text-white/90 hover:text-yellow transition-colors text-xs font-medium">{t('about')}</button>
+              <button onClick={() => document.getElementById('festivals')?.scrollIntoView({ behavior: 'smooth' })} className="text-white/90 hover:text-yellow transition-colors text-xs font-medium">{t('packages')}</button>
               <div className="bg-white/10 rounded-full px-3 py-1">
                 <span className="text-white text-xs font-medium">CHE</span>
               </div>
@@ -93,7 +96,7 @@ export default function Hero() {
         </div>
       </nav>
 
-      <section className="pt-32 pb-16 px-6">
+      <section id="hero" className="pt-32 pb-16 px-6">
         <div className="floating-particles">
           <div className="particle particle-1"></div>
           <div className="particle particle-2"></div>
@@ -138,14 +141,13 @@ export default function Hero() {
         </div>
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <h1 className="font-serif text-6xl md:text-8xl font-bold mb-8 leading-tight">
-            Live a Culture,<br />
-            <span className="text-gradient">Not Just Visit It</span>
+            {t('heroTitle')}
           </h1>
           <p className="text-xl text-white/70 max-w-2xl mx-auto mb-12">
-            Cultural Homestay Exchange across CIS countries. Stay with families, learn traditions, create memories.
+            {t('heroSubtitle')}
           </p>
           <button className="bg-yellow text-dark-green px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow/90 transition-colors">
-            Start Your Journey
+            {t('exploreButton')}
           </button>
         </div>
       </section>

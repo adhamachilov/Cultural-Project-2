@@ -3,7 +3,8 @@
 import { useState } from 'react'
 
 export default function InteractiveMap() {
-  const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
+  const [selectedCountry, setSelectedCountry] = useState('')
+  const [selectedRegion, setSelectedRegion] = useState('')
 
   const countries = [
     {
@@ -69,7 +70,7 @@ export default function InteractiveMap() {
   ]
 
   return (
-    <section className="py-20 px-6 relative z-20">
+    <section id="locations" className="py-20 px-6 relative z-20">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 relative z-10">
           <h2 className="font-serif text-5xl md:text-6xl font-bold mb-6">

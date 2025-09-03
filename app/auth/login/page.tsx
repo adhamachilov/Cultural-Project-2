@@ -11,6 +11,19 @@ export default function Login() {
     e.preventDefault()
     // Handle login logic here
     console.log('Login attempt:', { email, password })
+    
+    // Admin login check
+    if (email === 'admin' && password === 'adjo1020') {
+      window.location.href = '/dashboard/admin'
+    }
+    // Host family login (check for host-specific usernames)
+    else if (email.toLowerCase().includes('host') || email.toLowerCase().includes('family')) {
+      window.location.href = '/dashboard/host'
+    }
+    // Tourist login (default for email addresses and other users)
+    else {
+      window.location.href = '/dashboard/tourist'
+    }
   }
 
   return (
@@ -79,17 +92,15 @@ export default function Login() {
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="email" className="block text-white/80 text-sm font-medium mb-2">
-                Email Address
-              </label>
+              <label className="block text-white/80 text-sm font-medium mb-2">Email or Username</label>
               <input
-                type="email"
-                id="email"
+                type="text"
+                name="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-yellow focus:bg-white/15 transition-all"
-                placeholder="Enter your email"
                 required
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-yellow focus:bg-white/15 transition-all"
+                placeholder="your.email@example.com or username"
               />
             </div>
 
