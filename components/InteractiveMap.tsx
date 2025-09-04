@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 export default function InteractiveMap() {
-  const [selectedCountry, setSelectedCountry] = useState('')
+  const [selectedCountry, setSelectedCountry] = useState<string | null>('')
   const [selectedRegion, setSelectedRegion] = useState('')
 
   const countries = [
