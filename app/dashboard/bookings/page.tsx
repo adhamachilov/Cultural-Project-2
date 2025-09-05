@@ -1,6 +1,8 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Bookings() {
   const mockBookings = [
@@ -79,11 +81,15 @@ export default function Bookings() {
         {/* Logo */}
         <div className="p-8 border-b border-white/10">
           <Link href="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-yellow rounded-2xl flex items-center justify-center">
-              <div className="w-5 h-5 bg-dark-green rounded-full"></div>
-            </div>
+            <Image 
+              src="/logo.png" 
+              alt="Magic of the East Logo" 
+              width={48} 
+              height={48} 
+              className="w-12 h-12 animate-spin-slow"
+            />
             <div>
-              <span className="text-white font-bold text-2xl block">CHE</span>
+              <span className="text-white font-bold text-2xl block">Magic of the East</span>
               <span className="text-white/60 text-sm">Cultural Exchange</span>
             </div>
           </Link>

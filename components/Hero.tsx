@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { useTranslation } from '../hooks/useTranslation'
+import Image from 'next/image'
+import { useTranslation } from '../contexts/TranslationContext'
 
 export default function Hero() {
   const { language, changeLanguage, t } = useTranslation()
@@ -33,16 +34,25 @@ export default function Hero() {
     <>
       <div className="cursor-glow"></div>
       <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="bg-dark-green/95 backdrop-blur-md rounded-full px-4 md:px-8 py-3 md:py-4 shadow-2xl border border-white/10">
-          <div className="flex items-center space-x-4 md:space-x-8">
-            <div className="w-6 h-6 md:w-8 md:h-8 bg-yellow rounded-full flex items-center justify-center flex-shrink-0">
-              <div className="w-2 h-2 md:w-3 md:h-3 bg-dark-green rounded-full"></div>
+        <div className="bg-dark-green/95 backdrop-blur-md rounded-full px-8 md:px-12 py-3 md:py-4 shadow-2xl border border-white/10 min-w-fit">
+          <div className="flex items-center justify-between space-x-8 md:space-x-12">
+            <div className="flex items-center space-x-3 flex-shrink-0">
+              <Image 
+                src="/logo.png" 
+                alt="Magic of the East Logo" 
+                width={32} 
+                height={32} 
+                className="w-6 h-6 md:w-8 md:h-8 animate-spin-slow"
+              />
+              <span className="text-white font-semibold text-sm md:text-base whitespace-nowrap">
+                {t('brandName')}
+              </span>
             </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <button onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })} className="text-white/90 hover:text-yellow transition-colors text-sm font-medium">{t('about')}</button>
-              <button onClick={() => document.getElementById('festivals')?.scrollIntoView({ behavior: 'smooth' })} className="text-white/90 hover:text-yellow transition-colors text-sm font-medium">{t('packages')}</button>
-              <button onClick={() => document.getElementById('locations')?.scrollIntoView({ behavior: 'smooth' })} className="text-white/90 hover:text-yellow transition-colors text-sm font-medium">{t('locations')}</button>
-              <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="text-white/90 hover:text-yellow transition-colors text-sm font-medium">{t('contact')}</button>
+            <div className="hidden lg:flex items-center space-x-8">
+              <button onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })} className="text-white/90 hover:text-yellow transition-colors text-sm font-medium whitespace-nowrap">{t('about')}</button>
+              <button onClick={() => document.getElementById('festivals')?.scrollIntoView({ behavior: 'smooth' })} className="text-white/90 hover:text-yellow transition-colors text-sm font-medium whitespace-nowrap">{t('packages')}</button>
+              <button onClick={() => document.getElementById('locations')?.scrollIntoView({ behavior: 'smooth' })} className="text-white/90 hover:text-yellow transition-colors text-sm font-medium whitespace-nowrap">{t('locations')}</button>
+              <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="text-white/90 hover:text-yellow transition-colors text-sm font-medium whitespace-nowrap">{t('contact')}</button>
               
               {/* Language Selector */}
               <div className="relative">
@@ -75,22 +85,23 @@ export default function Hero() {
                 )}
               </div>
               
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-4">
                 <Link href="/auth/login" className="text-white/90 hover:text-yellow transition-colors text-sm font-medium">
                   {t('login')}
                 </Link>
                 <div className="w-px h-4 bg-white/20"></div>
-                <Link href="/auth/signup" className="bg-yellow text-dark-green px-4 py-2 rounded-full text-sm font-semibold hover:bg-yellow/90 transition-colors whitespace-nowrap">
+                <Link href="/auth/signup" className="bg-yellow text-dark-green px-5 py-2 rounded-full text-sm font-semibold hover:bg-yellow/90 transition-colors whitespace-nowrap">
                   {t('signup')}
                 </Link>
               </div>
             </div>
-            <div className="md:hidden flex items-center space-x-3">
-              <button onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })} className="text-white/90 hover:text-yellow transition-colors text-xs font-medium">{t('about')}</button>
-              <button onClick={() => document.getElementById('festivals')?.scrollIntoView({ behavior: 'smooth' })} className="text-white/90 hover:text-yellow transition-colors text-xs font-medium">{t('packages')}</button>
-              <div className="bg-white/10 rounded-full px-3 py-1">
-                <span className="text-white text-xs font-medium">CHE</span>
-              </div>
+            <div className="lg:hidden flex items-center space-x-3">
+              <Link href="/auth/login" className="text-white/90 hover:text-yellow transition-colors text-sm font-medium">
+                {t('login')}
+              </Link>
+              <Link href="/auth/signup" className="bg-yellow text-dark-green px-4 py-2 rounded-full text-sm font-semibold hover:bg-yellow/90 transition-colors">
+                {t('signup')}
+              </Link>
             </div>
           </div>
         </div>
@@ -140,7 +151,7 @@ export default function Hero() {
           <div className="shooting-star shooting-star-3"></div>
         </div>
         <div className="max-w-6xl mx-auto text-center relative z-10">
-          <h1 className="font-serif text-6xl md:text-8xl font-bold mb-8 leading-tight">
+          <h1 className="font-serif text-6xl md:text-8xl font-bold mb-8 leading-tight text-gradient whitespace-pre-line">
             {t('heroTitle')}
           </h1>
           <p className="text-xl text-white/70 max-w-2xl mx-auto mb-12">

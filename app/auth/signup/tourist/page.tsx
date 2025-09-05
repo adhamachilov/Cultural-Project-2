@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function TouristSignup() {
   const router = useRouter()
@@ -107,10 +108,14 @@ export default function TouristSignup() {
           {/* Header */}
           <div className="text-center mb-8">
             <Link href="/" className="inline-flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-yellow rounded-2xl flex items-center justify-center">
-                <div className="w-5 h-5 bg-dark-green rounded-full"></div>
-              </div>
-              <span className="text-white font-bold text-2xl">CHE</span>
+              <Image 
+                src="/logo.png" 
+                alt="Magic of the East Logo" 
+                width={48} 
+                height={48} 
+                className="w-12 h-12 animate-spin-slow"
+              />
+              <span className="text-white font-bold text-2xl">Magic of the East</span>
             </Link>
             <h1 className="text-4xl font-bold text-white mb-2">Join as a Tourist</h1>
             <p className="text-white/70">Discover authentic cultural experiences around the world</p>

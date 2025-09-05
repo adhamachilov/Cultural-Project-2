@@ -1,6 +1,10 @@
 'use client'
 
+import { useState, useEffect } from 'react'
+import { useTranslation } from '../contexts/TranslationContext'
+
 export default function Testimonials() {
+  const { t } = useTranslation()
   const testimonials = [
     {
       id: 1,
@@ -58,11 +62,11 @@ export default function Testimonials() {
   return (
     <section className="py-20 px-6 relative overflow-hidden">
       <div className="max-w-6xl mx-auto text-center mb-16 relative z-10">
-        <h2 className="font-serif text-5xl md:text-6xl font-bold mb-6">
-          Stories from Our <span className="text-gradient">Cultural Explorers</span>
+        <h2 className="font-serif text-5xl md:text-6xl font-bold mb-6 text-gradient">
+          {t('testimonialsTitle')}
         </h2>
         <p className="text-xl text-white/70 max-w-3xl mx-auto">
-          Real experiences from travelers who chose to live culture, not just visit it
+          {t('testimonialsSubtitle')}
         </p>
       </div>
 

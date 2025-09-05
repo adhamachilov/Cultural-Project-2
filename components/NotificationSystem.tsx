@@ -136,11 +136,11 @@ export default function NotificationSystem() {
 
       {/* Notification Dropdown */}
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 w-96 bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl z-50">
+        <div className="absolute right-0 top-full mt-2 w-64 bg-dark-green/95 backdrop-blur-xl rounded-lg border border-white/20 shadow-2xl z-50">
           {/* Header */}
-          <div className="p-6 border-b border-white/20">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-white font-bold text-lg">Notifications</h3>
+          <div className="p-2.5 border-b border-white/20">
+            <div className="flex items-center justify-between mb-1.5">
+              <h3 className="text-white font-medium text-sm">Notifications</h3>
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-white/60 hover:text-white transition-colors"
@@ -152,10 +152,10 @@ export default function NotificationSystem() {
             </div>
 
             {/* Filter Tabs */}
-            <div className="flex space-x-2">
+            <div className="flex space-x-1">
               <button
                 onClick={() => setFilter('all')}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+                className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
                   filter === 'all'
                     ? 'bg-yellow text-dark-green'
                     : 'bg-white/10 text-white/70 hover:text-white'
@@ -165,7 +165,7 @@ export default function NotificationSystem() {
               </button>
               <button
                 onClick={() => setFilter('unread')}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+                className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
                   filter === 'unread'
                     ? 'bg-yellow text-dark-green'
                     : 'bg-white/10 text-white/70 hover:text-white'
@@ -178,52 +178,52 @@ export default function NotificationSystem() {
             {unreadCount > 0 && (
               <button
                 onClick={markAllAsRead}
-                className="mt-3 text-yellow hover:text-yellow/80 text-sm font-medium transition-colors"
+                className="mt-1 text-yellow hover:text-yellow/80 text-xs transition-colors"
               >
-                Mark all as read
+                Mark all read
               </button>
             )}
           </div>
 
           {/* Notifications List */}
-          <div className="max-h-96 overflow-y-auto">
+          <div className="max-h-52 overflow-y-auto">
             {filteredNotifications.length > 0 ? (
               filteredNotifications.map((notification) => (
                 <div
                   key={notification.id}
-                  className={`p-4 border-b border-white/10 hover:bg-white/5 transition-colors ${
+                  className={`p-2.5 border-b border-white/10 hover:bg-white/5 transition-colors ${
                     !notification.read ? 'bg-white/5' : ''
                   }`}
                 >
-                  <div className="flex items-start space-x-3">
-                    <div className="flex-shrink-0 mt-1">
+                  <div className="flex items-start space-x-2">
+                    <div className="flex-shrink-0 mt-0.5">
                       {getNotificationIcon(notification.type)}
                     </div>
                     
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between">
-                        <div className="flex-1">
-                          <h4 className={`text-sm font-medium ${
+                        <div className="flex-1 pr-2">
+                          <h4 className={`text-sm font-medium leading-tight ${
                             !notification.read ? 'text-white' : 'text-white/80'
                           }`}>
                             {notification.title}
                           </h4>
-                          <p className={`text-sm mt-1 ${
+                          <p className={`text-xs mt-0.5 leading-relaxed line-clamp-2 ${
                             !notification.read ? 'text-white/80' : 'text-white/60'
                           }`}>
                             {notification.message}
                           </p>
-                          <p className="text-white/50 text-xs mt-2">{notification.timestamp}</p>
+                          <p className="text-white/50 text-xs mt-0.5">{notification.timestamp}</p>
                         </div>
 
-                        <div className="flex items-center space-x-2 ml-2">
+                        <div className="flex flex-col items-center space-y-1">
                           {!notification.read && (
                             <button
                               onClick={() => markAsRead(notification.id)}
                               className="text-yellow hover:text-yellow/80 transition-colors"
                               title="Mark as read"
                             >
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                               </svg>
                             </button>
@@ -233,7 +233,7 @@ export default function NotificationSystem() {
                             className="text-white/40 hover:text-red-400 transition-colors"
                             title="Delete"
                           >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                             </svg>
                           </button>
@@ -247,7 +247,7 @@ export default function NotificationSystem() {
                             // Navigate to action URL
                             window.location.href = notification.actionUrl!
                           }}
-                          className="mt-3 text-yellow hover:text-yellow/80 text-sm font-medium transition-colors"
+                          className="mt-1 text-yellow hover:text-yellow/80 text-xs transition-colors"
                         >
                           View Details →
                         </button>
@@ -257,24 +257,24 @@ export default function NotificationSystem() {
                 </div>
               ))
             ) : (
-              <div className="p-8 text-center">
-                <div className="w-16 h-16 bg-white/10 rounded-2xl mx-auto mb-4 flex items-center justify-center">
-                  <svg className="w-8 h-8 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="p-3 text-center">
+                <div className="w-8 h-8 bg-white/10 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                  <svg className="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5-5V9.09c0-2.36-1.64-4.36-4-4.36S7 6.73 7 9.09V12l-5 5h5m8 0v1a3 3 0 01-6 0v-1m6 0H9" />
                   </svg>
                 </div>
-                <p className="text-white/60">
-                  {filter === 'unread' ? 'No unread notifications' : 'No notifications'}
+                <p className="text-white/60 text-xs">
+                  {filter === 'unread' ? 'No unread' : 'No notifications'}
                 </p>
               </div>
             )}
           </div>
 
           {/* Footer */}
-          <div className="p-4 border-t border-white/20">
+          <div className="p-2 border-t border-white/20">
             <button
               onClick={() => setIsOpen(false)}
-              className="w-full bg-white/10 text-white py-2 rounded-xl font-medium hover:bg-white/20 transition-colors"
+              className="w-full bg-white/10 text-white py-1.5 rounded text-xs font-medium hover:bg-white/20 transition-colors"
             >
               Close
             </button>

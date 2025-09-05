@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -80,10 +81,14 @@ export default function Login() {
           {/* Header */}
           <div className="text-center mb-8">
             <Link href="/" className="inline-flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-yellow rounded-full flex items-center justify-center">
-                <div className="w-4 h-4 bg-dark-green rounded-full"></div>
-              </div>
-              <span className="text-white font-bold text-2xl">CHE</span>
+              <Image 
+                src="/logo.png" 
+                alt="Magic of the East Logo" 
+                width={40} 
+                height={40} 
+                className="w-10 h-10 animate-spin-slow"
+              />
+              <span className="text-white font-bold text-2xl">Magic of the East</span>
             </Link>
             <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
             <p className="text-white/70">Sign in to continue your cultural journey</p>

@@ -199,7 +199,7 @@ Today, eco-tourism provides new opportunities for nomadic families to share thei
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-white mb-6">Cultural Stories</h2>
+          <h2 className="text-5xl font-bold text-gradient mb-6">Cultural Stories</h2>
           <p className="text-white/70 text-xl max-w-3xl mx-auto leading-relaxed">
             Dive deep into the rich cultural heritage of Central Asia and Russia through authentic stories, 
             traditions, and insights from local experts.

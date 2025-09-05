@@ -1,101 +1,103 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslation } from '../contexts/TranslationContext'
 import BookingModal from './BookingModal'
 import Link from 'next/link'
 
 export default function Festivals() {
+  const { t } = useTranslation()
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [bookingModal, setBookingModal] = useState<{ isOpen: boolean; item: any }>({ isOpen: false, item: null })
 
   const upcomingFestivals = [
     {
       id: 1,
-      name: 'Navruz Spring Festival',
-      location: 'Tashkent, Uzbekistan',
+      name: t('navruzFestival'),
+      location: t('navruzLocation'),
       date: '2024-03-21',
       dateFormatted: 'March 21, 2024',
       category: 'seasonal',
       price: 150,
       duration: '3 days',
-      image: 'https://uzbekistan.travel/storage/app/uploads/public/671/9dc/d43/6719dcd43a6f2547697505.jpg',
-      description: 'Celebrate the Persian New Year with traditional music, dance, and authentic Uzbek cuisine',
+      image: 'https://www.centralasia-travel.com/upload/tiles/navruz-9-708.jpg',
+      description: t('navruzDescription'),
       highlights: ['Traditional performances', 'Local cuisine tasting', 'Cultural workshops', 'Folk music concerts']
     },
     {
       id: 2,
-      name: 'Kazakh Eagle Festival',
-      location: 'Almaty, Kazakhstan',
+      name: t('eagleHuntingFestival'),
+      location: t('eagleHuntingLocation'),
       date: '2024-04-15',
       dateFormatted: 'April 15, 2024',
       category: 'cultural',
       price: 280,
       duration: '2 days',
-      image: 'https://kalpak-travel.com/wp-content/uploads/2017/04/turkistan-mausoleum-kazakhstan.jpg',
-      description: 'Witness the ancient art of eagle hunting with Kazakh nomads in the stunning Altai Mountains',
+      image: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2013/01/24/21/5515748.jpg?width=1200',
+      description: t('eagleHuntingDescription'),
       highlights: ['Eagle hunting demonstrations', 'Horseback riding', 'Traditional games', 'Nomadic lifestyle experience']
     },
     {
       id: 3,
-      name: 'Russian Maslenitsa Week',
-      location: 'Moscow, Russia',
+      name: t('maslenitsaFestival'),
+      location: t('maslenitsaLocation'),
       date: '2024-02-26',
       dateFormatted: 'February 26, 2024',
       category: 'religious',
       price: 200,
       duration: '7 days',
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800',
-      description: 'Experience the colorful Russian butter week with pancakes, folk dances, and winter activities',
+      image: 'https://wp.expatexplore.com/wp-content/uploads/2022/02/MaslenitsaFeatureImage.jpg',
+      description: t('maslenitsaDescription'),
       highlights: ['Blini making workshops', 'Folk dance performances', 'Winter sports', 'Traditional crafts']
     },
     {
       id: 4,
-      name: 'Kyrgyz Nomad Games',
-      location: 'Bishkek, Kyrgyzstan',
+      name: t('worldNomadGames'),
+      location: t('worldNomadLocation'),
       date: '2024-05-10',
       dateFormatted: 'May 10, 2024',
       category: 'sports',
       price: 320,
       duration: '4 days',
-      image: 'https://eurasia.travel/wp-content/uploads/2024/09/kyrgyz-people-3.jpg',
-      description: 'Join the spectacular nomadic sports competition featuring traditional horseback games',
+      image: 'https://eurasianet.org/sites/default/files/styles/article/public/images/DSC_2269.jpg?itok=nYUeOymV',
+      description: t('worldNomadDescription'),
       highlights: ['Kok-boru matches', 'Archery competitions', 'Traditional wrestling', 'Cultural ceremonies']
     },
     {
       id: 5,
-      name: 'Tajik Silk Road Festival',
-      location: 'Dushanbe, Tajikistan',
+      name: t('silkRoadFestival'),
+      location: t('silkRoadLocation'),
       date: '2024-06-05',
       dateFormatted: 'June 5, 2024',
       category: 'cultural',
       price: 240,
       duration: '3 days',
-      image: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=800',
-      description: 'Explore the rich heritage of the Silk Road with traditional crafts and cultural performances',
+      image: 'https://central-asia.guide/wp-content/uploads/2023/01/tajik-food-1024x682.jpg',
+      description: t('silkRoadDescription'),
       highlights: ['Silk weaving workshops', 'Traditional music', 'Craft exhibitions', 'Historical tours']
     },
     {
       id: 6,
-      name: 'Turkmen Carpet Festival',
-      location: 'Ashgabat, Turkmenistan',
+      name: t('carpetFestival'),
+      location: t('carpetLocation'),
       date: '2024-07-20',
       dateFormatted: 'July 20, 2024',
       category: 'arts',
       price: 180,
       duration: '2 days',
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800',
-      description: 'Discover the intricate art of Turkmen carpet weaving and traditional textile crafts',
-      highlights: ['Carpet weaving demos', 'Traditional patterns workshop', 'Cultural exhibitions', 'Master craftsmen talks']
+      image: 'https://turkmenistan.gov.tm/storage/app/media/Images/2022/05-2022/29052022/Haly%20Bayramy/29052022-1-1-halybayramy.jpg',
+      description: t('carpetDescription'),
+      highlights: ['Carpet weaving demos', 'Traditional patterns', 'Artisan workshops', 'Cultural exhibitions']
     }
   ]
 
   const categories = [
-    { id: 'all', name: 'All Festivals', count: upcomingFestivals.length },
-    { id: 'cultural', name: 'Cultural', count: upcomingFestivals.filter(f => f.category === 'cultural').length },
-    { id: 'seasonal', name: 'Seasonal', count: upcomingFestivals.filter(f => f.category === 'seasonal').length },
-    { id: 'religious', name: 'Religious', count: upcomingFestivals.filter(f => f.category === 'religious').length },
-    { id: 'sports', name: 'Sports', count: upcomingFestivals.filter(f => f.category === 'sports').length },
-    { id: 'arts', name: 'Arts & Crafts', count: upcomingFestivals.filter(f => f.category === 'arts').length }
+    { id: 'all', name: t('allFestivals'), count: upcomingFestivals.length },
+    { id: 'cultural', name: t('cultural'), count: upcomingFestivals.filter(f => f.category === 'cultural').length },
+    { id: 'seasonal', name: t('seasonal'), count: upcomingFestivals.filter(f => f.category === 'seasonal').length },
+    { id: 'religious', name: t('religious'), count: upcomingFestivals.filter(f => f.category === 'religious').length },
+    { id: 'sports', name: t('sports'), count: upcomingFestivals.filter(f => f.category === 'sports').length },
+    { id: 'arts', name: t('artsCrafts'), count: upcomingFestivals.filter(f => f.category === 'arts').length }
   ]
 
   const filteredFestivals = selectedCategory === 'all' 
@@ -123,11 +125,10 @@ export default function Festivals() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-serif font-bold text-gradient mb-6">
-            Cultural Festivals
+            {t('festivalsTitle')}
           </h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-            Immerse yourself in authentic cultural celebrations across Central Asia and Russia. 
-            Join local communities in their most cherished traditions and festivals.
+            {t('festivalsSubtitle')}
           </p>
         </div>
 
@@ -231,7 +232,7 @@ export default function Festivals() {
                       })}
                       className="flex-1 bg-gradient-to-r from-yellow to-yellow/80 text-dark-green py-3 rounded-2xl font-bold hover:from-yellow/90 hover:to-yellow/70 transition-all transform hover:scale-105"
                     >
-                      Book Festival
+                      {t('bookNowButton')}
                     </button>
                     <button className="px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-white hover:bg-white/20 transition-all">
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -248,29 +249,20 @@ export default function Festivals() {
         {/* Call to Action */}
         <div className="text-center">
           <div className="bg-gradient-to-r from-yellow/20 via-yellow/10 to-transparent rounded-3xl p-8 border border-yellow/30 max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold text-white mb-4">Ready to Experience Authentic Culture?</h3>
+            <h3 className="text-3xl font-bold text-white mb-4">{t('ctaTitle')}</h3>
             <p className="text-white/80 text-lg mb-6">
-              Join thousands of cultural enthusiasts who have discovered the magic of Central Asian traditions
+              {t('ctaSubtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/auth/signup"
-                className="bg-yellow text-dark-green px-8 py-4 rounded-2xl font-bold hover:bg-yellow/90 transition-colors inline-flex items-center justify-center"
-              >
-                Start Your Cultural Journey
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+              <Link href="/auth/signup" className="bg-yellow text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow/90 transition-colors">
+                {t('startJourneyButton')}
               </Link>
-              <Link 
-                href="/festivals"
-                className="bg-white/10 text-white border border-white/20 px-8 py-4 rounded-2xl font-semibold hover:bg-white/20 transition-colors inline-flex items-center justify-center"
-              >
-                View All Festivals
-              </Link>
+              <button className="border border-yellow text-yellow px-8 py-3 rounded-full font-semibold hover:bg-yellow hover:text-black transition-colors">
+                {t('viewAllButton')}
+              </button>
             </div>
           </div>
-          </div>
+        </div>
         </div>
       </section>
 

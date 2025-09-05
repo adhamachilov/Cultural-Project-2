@@ -1,6 +1,10 @@
 'use client'
 
+import Image from 'next/image'
+import { useTranslation } from '../contexts/TranslationContext'
+
 export default function Footer() {
+  const { t } = useTranslation()
   return (
     <footer id="contact" className="bg-dark-green/50 backdrop-blur-md py-16">
       <div className="max-w-6xl mx-auto px-6 py-12">
@@ -8,13 +12,17 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="md:col-span-1">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-8 h-8 bg-yellow rounded-full flex items-center justify-center">
-                <div className="w-3 h-3 bg-dark-green rounded-full"></div>
-              </div>
-              <span className="text-white font-bold text-xl">CHE</span>
+              <Image 
+                src="/logo.png" 
+                alt="Magic of the East Logo" 
+                width={32} 
+                height={32} 
+                className="w-8 h-8"
+              />
+              <span className="text-white font-bold text-xl">{t('brandName')}</span>
             </div>
             <p className="text-white/70 text-sm leading-relaxed">
-              Cultural Homestay Exchange connecting travelers with authentic local experiences across CIS countries.
+              {t('footerAboutText')}
             </p>
             <div className="flex space-x-4 mt-6">
               <a href="#" className="text-white/70 hover:text-yellow transition-colors">
@@ -42,32 +50,32 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-white font-semibold mb-4">{t('quickLinks')}</h3>
             <ul className="space-y-3">
-              <li><a href="#about" className="text-white/70 hover:text-yellow transition-colors text-sm">About Us</a></li>
-              <li><a href="#packages" className="text-white/70 hover:text-yellow transition-colors text-sm">Travel Packages</a></li>
-              <li><a href="#locations" className="text-white/70 hover:text-yellow transition-colors text-sm">Destinations</a></li>
-              <li><a href="#hosts" className="text-white/70 hover:text-yellow transition-colors text-sm">Become a Host</a></li>
-              <li><a href="#testimonials" className="text-white/70 hover:text-yellow transition-colors text-sm">Testimonials</a></li>
+              <li><a href="#about" className="text-white/70 hover:text-yellow transition-colors text-sm">{t('aboutUs')}</a></li>
+              <li><a href="#packages" className="text-white/70 hover:text-yellow transition-colors text-sm">{t('travelPackages')}</a></li>
+              <li><a href="#locations" className="text-white/70 hover:text-yellow transition-colors text-sm">{t('destinations')}</a></li>
+              <li><a href="#hosts" className="text-white/70 hover:text-yellow transition-colors text-sm">{t('becomeHost')}</a></li>
+              <li><a href="#testimonials" className="text-white/70 hover:text-yellow transition-colors text-sm">{t('testimonials')}</a></li>
             </ul>
           </div>
 
           {/* Destinations */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Destinations</h3>
+            <h3 className="text-white font-semibold mb-4">{t('destinations')}</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-white/70 hover:text-yellow transition-colors text-sm">Russia</a></li>
-              <li><a href="#" className="text-white/70 hover:text-yellow transition-colors text-sm">Kazakhstan</a></li>
-              <li><a href="#" className="text-white/70 hover:text-yellow transition-colors text-sm">Uzbekistan</a></li>
-              <li><a href="#" className="text-white/70 hover:text-yellow transition-colors text-sm">Kyrgyzstan</a></li>
-              <li><a href="#" className="text-white/70 hover:text-yellow transition-colors text-sm">Tajikistan</a></li>
-              <li><a href="#" className="text-white/70 hover:text-yellow transition-colors text-sm">Turkmenistan</a></li>
+              <li><a href="#" className="text-white/70 hover:text-yellow transition-colors text-sm">{t('russia')}</a></li>
+              <li><a href="#" className="text-white/70 hover:text-yellow transition-colors text-sm">{t('kazakhstan')}</a></li>
+              <li><a href="#" className="text-white/70 hover:text-yellow transition-colors text-sm">{t('uzbekistan')}</a></li>
+              <li><a href="#" className="text-white/70 hover:text-yellow transition-colors text-sm">{t('kyrgyzstan')}</a></li>
+              <li><a href="#" className="text-white/70 hover:text-yellow transition-colors text-sm">{t('tajikistan')}</a></li>
+              <li><a href="#" className="text-white/70 hover:text-yellow transition-colors text-sm">{t('turkmenistan')}</a></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Contact</h3>
+            <h3 className="text-white font-semibold mb-4">{t('contact')}</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <svg className="w-4 h-4 text-yellow flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -95,12 +103,12 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-white/50 text-sm mb-4 md:mb-0">
-            © 2024 Cultural Homestay Exchange. All rights reserved.
+            {t('rightsReserved')}
           </p>
           <div className="flex space-x-6">
-            <a href="#" className="text-white/50 hover:text-yellow transition-colors text-sm">Privacy Policy</a>
-            <a href="#" className="text-white/50 hover:text-yellow transition-colors text-sm">Terms of Service</a>
-            <a href="#" className="text-white/50 hover:text-yellow transition-colors text-sm">Cookie Policy</a>
+            <a href="#" className="text-white/50 hover:text-yellow transition-colors text-sm">{t('privacyPolicy')}</a>
+            <a href="#" className="text-white/50 hover:text-yellow transition-colors text-sm">{t('termsOfService')}</a>
+            <a href="#" className="text-white/50 hover:text-yellow transition-colors text-sm">{t('cookiePolicy')}</a>
           </div>
         </div>
       </div>

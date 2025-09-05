@@ -1,69 +1,71 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslation } from '../contexts/TranslationContext'
 
 export default function InteractiveMap() {
+  const { t } = useTranslation()
   const [selectedCountry, setSelectedCountry] = useState<string | null>('')
   const [selectedRegion, setSelectedRegion] = useState('')
 
   const countries = [
     {
       id: 'russia',
-      name: 'Russia',
+      name: t('russia'),
       flag: '🇷🇺',
       families: 89,
       cities: ['Moscow', 'St. Petersburg', 'Kazan', 'Sochi'],
-      description: 'Vast cultural diversity in Russia',
+      description: t('russiaDescription'),
       image: 'https://images.unsplash.com/photo-1513326738677-b964603b136d?w=400&h=250&fit=crop',
       color: '#fdeb37'
     },
     {
       id: 'kazakhstan',
-      name: 'Kazakhstan',
+      name: t('kazakhstan'),
       flag: '🇰🇿',
       families: 45,
       cities: ['Almaty', 'Nur-Sultan', 'Shymkent'],
-      description: 'Experience nomadic traditions and modern city life',
+      description: t('kazakhstanDescription'),
       image: 'https://kalpak-travel.com/wp-content/uploads/2017/04/turkistan-mausoleum-kazakhstan.jpg',
       color: '#8BA79B'
     },
     {
       id: 'uzbekistan',
-      name: 'Uzbekistan',
+      name: t('uzbekistan'),
       flag: '🇺🇿',
       families: 38,
       cities: ['Tashkent', 'Samarkand', 'Bukhara'],
-      description: 'Discover the heart of the ancient Silk Road',
+      description: t('uzbekistanDescription'),
       image: 'https://uzbekistan.travel/storage/app/uploads/public/671/9dc/d43/6719dcd43a6f2547697505.jpg',
       color: '#F1BFAD'
     },
     {
       id: 'kyrgyzstan',
-      name: 'Kyrgyzstan',
+      name: t('kyrgyzstan'),
       flag: '🇰🇬',
       families: 22,
       cities: ['Bishkek', 'Osh', 'Karakol'],
-      description: 'Mountain adventures and nomadic heritage',
+      description: t('kyrgyzstanDescription'),
       image: 'https://eurasia.travel/wp-content/uploads/2024/09/kyrgyz-people-3.jpg',
       color: '#fdeb37'
     },
     {
       id: 'tajikistan',
-      name: 'Tajikistan',
+      name: t('tajikistan'),
       flag: '🇹🇯',
       families: 18,
       cities: ['Dushanbe', 'Khujand', 'Kulob'],
-      description: 'Persian culture in the Pamir mountains',
+      description: t('tajikistanDescription'),
       image: 'https://www.mustseespots.com/tajikistan/img/historical-museum-of-sughd-region.jpg',
       color: '#8BA79B'
     },
     {
       id: 'turkmenistan',
-      name: 'Turkmenistan',
+      name: t('turkmenistan'),
       flag: '🇹🇲',
       families: 15,
       cities: ['Ashgabat', 'Turkmenbashi', 'Mary'],
-      description: 'Desert hospitality and ancient traditions',
+      description: t('turkmenistanDescription'),
       image: 'https://i.pinimg.com/736x/f7/34/d5/f734d5f8e84b42b7075fa6f644641766.jpg',
       color: '#F1BFAD'
     }
@@ -73,11 +75,11 @@ export default function InteractiveMap() {
     <section id="locations" className="py-20 px-6 relative z-20">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 relative z-10">
-          <h2 className="font-serif text-5xl md:text-6xl font-bold mb-6">
-            Explore <span className="text-gradient">Cultural Destinations</span>
+          <h2 className="font-serif text-5xl md:text-6xl font-bold mb-6 text-gradient">
+            {t('mapTitle')}
           </h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto">
-            Connect with host families across Russia and CIS countries for authentic cultural experiences
+            {t('mapSubtitle')}
           </p>
         </div>
 
@@ -163,7 +165,7 @@ export default function InteractiveMap() {
                   ))}
                   {country.cities.length > 3 && (
                     <span className="bg-yellow/20 text-yellow px-3 py-1 rounded-full text-xs font-medium">
-                      +{country.cities.length - 3} more
+                      +{country.cities.length - 3} {t('more')}
                     </span>
                   )}
                 </div>
@@ -172,15 +174,15 @@ export default function InteractiveMap() {
                   <div className="grid grid-cols-2 gap-4 mb-4">
                     <div className="text-center">
                       <div className="text-2xl font-bold text-yellow">{country.families}</div>
-                      <div className="text-white/60 text-xs">Host Families</div>
+                      <div className="text-white/60 text-xs">{t('hostFamilies')}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-yellow">{country.cities.length}</div>
-                      <div className="text-white/60 text-xs">Cities</div>
+                      <div className="text-white/60 text-xs">{t('citiesLabel')}</div>
                     </div>
                   </div>
                   <button className="w-full bg-yellow text-dark-green px-4 py-2 rounded-full font-semibold text-sm hover:bg-yellow/90 transition-colors">
-                    Explore {country.name}
+                    {t('explore')} {country.name}
                   </button>
                 </div>
               </div>
@@ -192,19 +194,19 @@ export default function InteractiveMap() {
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="text-center">
             <div className="text-4xl font-bold text-yellow mb-2">227</div>
-            <div className="text-white/60">Total Families</div>
+            <div className="text-white/60">{t('totalFamilies')}</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold text-yellow mb-2">6</div>
-            <div className="text-white/60">Countries</div>
+            <div className="text-white/60">{t('countries')}</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold text-yellow mb-2">32</div>
-            <div className="text-white/60">Cities</div>
+            <div className="text-white/60">{t('cities')}</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold text-yellow mb-2">1,200+</div>
-            <div className="text-white/60">Happy Travelers</div>
+            <div className="text-white/60">{t('happyTravelers')}</div>
           </div>
         </div>
       </div>

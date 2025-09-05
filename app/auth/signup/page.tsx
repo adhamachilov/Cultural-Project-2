@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -57,10 +58,14 @@ export default function SignUp() {
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6">
         <div className="text-center mb-12">
           <Link href="/" className="inline-flex items-center space-x-3 mb-8">
-            <div className="w-16 h-16 bg-yellow rounded-3xl flex items-center justify-center">
-              <div className="w-8 h-8 bg-dark-green rounded-2xl"></div>
-            </div>
-            <span className="text-white font-bold text-3xl">CHE</span>
+            <Image 
+              src="/logo.png" 
+              alt="Magic of the East Logo" 
+              width={64} 
+              height={64} 
+              className="w-16 h-16 animate-spin-slow"
+            />
+            <span className="text-white font-bold text-3xl">Magic of the East</span>
           </Link>
           <h1 className="text-5xl font-bold text-white mb-4">Join Our Community</h1>
           <p className="text-white/70 text-xl max-w-2xl mx-auto">
